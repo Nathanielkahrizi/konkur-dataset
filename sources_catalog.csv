@@ -1,0 +1,36 @@
+year,group,session,type,url,title,verified
+1381-1398,all,همه,archive,https://konkur.in/57190/,"آرشیو کامل دفترچه‌های کنکور و کلیدهای سنجش ۱۳۸۱ تا ۱۳۹۸ (همه گروه‌ها)",fetch
+1402,all,تیر,sanjesh_key,https://konkur.in/105006/,"کلید رسمی سازمان سنجش کنکور تیر ۱۴۰۲",fetch
+1404,tajrobi,تیر,post,https://konkur.in/119129/,"سوالات و پاسخ تشریحی کنکور تیر ۱۴۰۴",fetch
+1402,tajrobi,تیر,post,https://konkur.in/104737/,"سوالات و پاسخ کنکور تجربی تیر ۱۴۰۲",fetch
+1402,all,اردیبهشت,post,https://konkur.in/101624/,"کنکور ۱۴۰۲ نوبت اول — سوالات و کلید",fetch
+1404,tajrobi,تیر,post,https://konkur.in/119411/,"کنکور تیر ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1404,all,تیر,post,https://konkur.in/119132/,"کنکور تیر ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1404,all,تیر,post,https://konkur.in/119121/,"کنکور تیر ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1404,all,تیر,post,https://konkur.in/119424/,"کنکور تیر ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1404,all,-,post,https://konkur.in/117423/,"کنکور ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1404,all,تیر,post,https://konkur.in/119127/,"کنکور تیر ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1404,all,تیر,post,https://konkur.in/119421/,"کنکور تیر ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1404,all,-,post,https://konkur.in/117428/,"کنکور ۱۴۰۴ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1403-1404,all,-,post,https://konkur.in/116115/,"کنکور (حدود ۱۴۰۳-۱۴۰۴) — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1403,tajrobi,تیر,post,https://konkur.in/111823/,"کنکور تجربی تیر ۱۴۰۳ نوبت دوم",search
+1403,ensani,تیر,post,https://konkur.in/111831/,"کنکور انسانی تیر ۱۴۰۳",search
+1403,honar,اردیبهشت,post,https://konkur.in/109474/,"کنکور هنر اردیبهشت ۱۴۰۳",search
+1403,ensani,-,post,https://konkur.in/109480/,"کنکور انسانی ۱۴۰۳",search
+1403,all,-,post,https://konkur.in/109465/,"کنکور ۱۴۰۳ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1402-1403,all,-,post,https://konkur.in/108531/,"کنکور (حدود ۱۴۰۲-۱۴۰۳) — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1402-1403,all,-,post,https://konkur.in/108535/,"کنکور (حدود ۱۴۰۲-۱۴۰۳) — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1402,riazi,اردیبهشت,post,https://konkur.in/101627/,"کنکور ریاضی ۱۴۰۲ نوبت اول",search
+1402,ensani,اردیبهشت,post,https://konkur.in/101632/,"کنکور انسانی ۱۴۰۲ نوبت اول",search
+1402,zaban,اردیبهشت,post,https://konkur.in/101639/,"کنکور زبان ۱۴۰۲ نوبت اول",search
+1402,honar,تیر,post,https://konkur.in/104745/,"کنکور هنر تیر ۱۴۰۲ نوبت دوم",search
+1402,riazi,تیر,post,https://konkur.in/105080/,"کنکور ریاضی خارج از کشور ۱۴۰۲",search
+1401,tajrobi,اردیبهشت,post,https://konkur.in/96826/,"کنکور تجربی ۱۴۰۱ — سوالات و پاسخ تشریحی",search
+1401,ensani,اردیبهشت,post,https://konkur.in/96836/,"کنکور انسانی ۱۴۰۱",search
+1401,tajrobi,خارج,post,https://konkur.in/96842/,"کنکور تجربی خارج از کشور ۱۴۰۱",search
+1401,all,-,recovery,https://konkur.in/100820/,"بازیابی مجدد کنکور ۱۴۰۱",search
+1400,riazi,-,post,https://konkur.in/90630/,"کنکور ۱۴۰۰ — پست شناسایی‌شده (نیازمند تکمیل عنوان)",search
+1400,ensani,-,post,https://konkur.in/90654/,"کنکور انسانی ۱۴۰۰",search
+1399,tajrobi,-,post,https://konkur.in/84502/,"کنکور تجربی ۱۳۹۹ — سوالات و پاسخ تشریحی",search
+1392,riazi,-,post,https://konkur.in/8169/8169.html,"کنکور ریاضی ۱۳۹۲",search
+1390,ensani,-,post,https://konkur.in/763/763.html,"کنکور انسانی ۱۳۹۰",search

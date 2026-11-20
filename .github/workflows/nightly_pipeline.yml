@@ -1,0 +1,74 @@
+name: nightly-pipeline
+
+on:
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly-pipeline
+  cancel-in-progress: false
+
+jobs:
+  crawl-and-pack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          npm install
+
+      - name: Crawl new konkur.in URLs
+        continue-on-error: true
+        run: |
+          python crawl_konkur.py \
+            https://konkur.in/57190/ \
+            konkur1404 konkur1403 konkur1402 konkur1401 konkur1400 \
+            پاسخ-تشریحی-کنکور-99 کنکور11399 \
+            https://konkur.in/category/konkur \
+            https://konkur.in/category/konkur/ri-konkur \
+            https://konkur.in/category/konkur/ho-konkur \
+            --max-posts 40 --out urls_nightly.txt
+
+      - name: Fetch PDFs
+        continue-on-error: true
+        run: |
+          { grep -v '^#' urls_catalog.txt; grep -v '^#' urls_nightly.txt; } 2>/dev/null \
+            | sort -u > urls_run.txt
+          wc -l urls_run.txt
+          python fetch_list.py --urls urls_run.txt --out raw_sources --log logs/fetch_errors.log
+
+      - name: Extract PDF text
+        continue-on-error: true
+        run: node pdf_extract.mjs --src raw_sources --out ocr_text
+
+      - name: Pack JSONL + Markdown
+        continue-on-error: true
+        run: python ocr_pack.py --text-dir ocr_text --jsonl ocr_pages_jsonl --md parsed_md
+
+      - name: Commit text outputs
+        run: |
+          git config user.name "konkur-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add ocr_text ocr_pages_jsonl parsed_md logs urls_nightly.txt 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new data — skipping commit"
+          else
+            git commit -m "data: nightly ocr update $(date -u +%F)"
+            git push
+          fi

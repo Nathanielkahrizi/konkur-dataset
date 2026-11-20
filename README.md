@@ -59,3 +59,9 @@ Output dataset shape
 `{"source_id": "<booklet>", "page": <N>, "text": "..."}`
 
 `parsed_md/<booklet>.md` — full booklet with `<!-- PAGE: N -->` page separators.
+
+## Source catalog, nightly automation & Persian runbook
+
+- `sources_catalog.csv` — 35 categorized konkur sources (year, group, session, type, url, title, verified); `urls_catalog.txt` — feed for the downloader + crawl seeds.
+- `.github/workflows/nightly_pipeline.yml` — 24/7 serverless pipeline (GitHub Actions, cron 03:30 UTC): crawl → fetch → extract → pack, commits text outputs only.
+- `WORKFLOW-FA.md` — Persian step-by-step runbook for tonight's local run, the nightly automation, and the datagenerator-powered question/lesson generation step.
