@@ -1,0 +1,26 @@
+# Real direct URLs harvested live from the konkur.in search index.
+# All lines are real, working file/page URLs; comments document content.
+# Host pattern: dl.konkur.in/YYYY/MM/<file>-[konkur.in].pdf  (direct PDFs)
+#               konkur.in/<post-id>/....html                 (post pages with questions + keys)
+
+# --- Direct PDFs: konkur-prep / past-paper sources (verified via search index) ---
+https://dl.konkur.in/2023/12/10T-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/12/11E-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/12/10R-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/12/11R-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2022/12/Gaj-Sal10-Riazi-1401-10-2-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/05/Gaj-Sal12-Ensani-1402-2-29-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/05/kanoon-Sal12-Tajrobi-29Ordibehesht1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2024/06/English3-Kharej1401-%5Bkonkur.in%5D.pdf
+
+# --- konkur.in post pages (question booklets, detailed answers, official SANJESH keys) ---
+# Tir 1404: questions + detailed answers
+https://konkur.in/119129/
+# 1402 ordinal 1 (Ordibehesht): questions + answer key
+https://konkur.in/101624/
+# Tir 1402 Tajrobi: questions + answers
+https://konkur.in/104737/
+# Official SANJESH answer key, Tir 1402
+https://konkur.in/105006/
+# Master archive 1381-1405: index of every konkur booklet + keys
+https://konkur.in/57190/

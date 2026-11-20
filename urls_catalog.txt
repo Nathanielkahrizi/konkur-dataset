@@ -1,0 +1,27 @@
+# urls_catalog.txt — منابع شناسایی‌شده کنکور (سوالات + کلیدهای سنجش)
+# این فایل دو نقش دارد:
+#   1) ورودی مستقیم fetch_list.py برای دانلود لینک‌های مستقیم PDF
+#   2) رفرنس بذرهای (seed) کراول برای crawl_konkur.py (بخش SEEDS پایین فایل)
+# ستون‌های تفصیلی در sources_catalog.csv نگهداری می‌شود.
+# الگوی میزبان: dl.konkur.in/YYYY/MM/<file>.pdf  (PDF مستقیم)
+#               konkur.in/<post-id>/...html      (صفحه پست = دفترچه + کلید)
+
+# --- لینک‌های مستقیم PDF (تأییدشده از ایندکس جست‌وجو) ---
+https://dl.konkur.in/2023/12/10T-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/12/11E-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/12/10R-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/12/11R-Kanoon-1Dey1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2022/12/Gaj-Sal10-Riazi-1401-10-2-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/05/Gaj-Sal12-Ensani-1402-2-29-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2023/05/kanoon-Sal12-Tajrobi-29Ordibehesht1402-%5Bkonkur.in%5D.pdf
+https://dl.konkur.in/2024/06/English3-Kharej1401-%5Bkonkur.in%5D.pdf
+
+# --- SEEDS برای crawl_konkur.py (خط زیر را اجرا کنید؛ خروجی: urls_expanded.txt) ---
+# python3 crawl_konkur.py https://konkur.in/57190/ konkur1404 konkur1403 konkur1402 konkur1401 konkur1400 پاسخ-تشریحی-کنکور-99 کنکور11399 https://konkur.in/category/konkur https://konkur.in/category/konkur/ri-konkur https://konkur.in/category/konkur/ho-konkur --max-posts 40 --out urls_expanded.txt
+#
+# پست‌های تکی کاتالوگ (برای کراول تک‌تک؛ هر خط یک seed معتبر):
+# https://konkur.in/119129/  119411  119132  119121  119424  117423  119127  119421  117428
+# https://konkur.in/116115/  111823  111831  109474  109480  109465  108531  108535
+# https://konkur.in/104737/  101624  101627  101632  101639  104745  105080  105006
+# https://konkur.in/96826/   96836   96842   100820  90630   90654   84502
+# https://konkur.in/8169/8169.html   https://konkur.in/763/763.html

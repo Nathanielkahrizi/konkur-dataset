@@ -1,0 +1,13 @@
+{
+  "name": "konkur-dataset",
+  "private": true,
+  "type": "module",
+  "description": "Konkur exam booklet dataset pipeline",
+  "scripts": {
+    "extract": "node pdf_extract.mjs --src raw_sources --out ocr_text",
+    "pack": "python3 ocr_pack.py --text-dir ocr_text --jsonl ocr_pages_jsonl --md parsed_md"
+  },
+  "dependencies": {
+    "pdf-parse": "^2.4.5"
+  }
+}

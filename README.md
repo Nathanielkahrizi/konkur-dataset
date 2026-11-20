@@ -5,7 +5,10 @@ download exam booklets (دفترچه سوالات), official SANJESH answer keys
 and prep-institute papers, OCR them into zips, and pack the text into a
 JSONL + Markdown dataset.
 
-All scripts: Python 3.10+, standard library + `requests` only.
+All scripts: Python 3.10+, standard library + `requests` only. The optional
+PDF text-extraction step (`pdf_extract.mjs`) runs fully locally with Node +
+`pdf-parse` — no server, no API keys. Image-only (scanned) pages are detected
+and skipped for later OCR/vision processing.
 
 ## Files
 
@@ -15,6 +18,8 @@ All scripts: Python 3.10+, standard library + `requests` only.
 | `crawl_konkur.py` | Crawl `konkur.in` year-tag pages, write direct PDF + post URLs |
 | `fetch_list.py` | Download URLs from a list into `raw_sources/` (timeout, retries, empty-body rejection, error log) |
 | `ocr_pack.py` | Pack `ocr_zips/*.zip` text pages into `ocr_pages_jsonl/<stem>.jsonl` + `parsed_md/<stem>.md` |
+| `pdf_extract.mjs` | Node CLI: extract per-page text from downloaded PDFs (no OCR server required) |
+| `package.json` | Node manifest for the extraction step (single dependency: `pdf-parse`) |
 | `urls_sample_real.txt` | Starter list of real, live-verified direct PDFs and archive pages |
 
 ## Build the 15-year dataset (Konkur 1390–1404)
@@ -39,7 +44,13 @@ cat sheets/*.txt >> urls_tajrobi.txt
 cat urls_sample_real.txt urls_tajrobi.txt | grep -v '^\s*#' | grep . > urls.txt
 python3 fetch_list.py --urls urls.txt --out raw_sources --log logs/fetch_errors.log
 
-# 4) OCR the PDFs into per-page text zips (your tooling of choice), then pack:
+# 4) extract text directly from digital (non-scanned) PDFs — serverless, local:
+#    adapted from Nathanielkahrizi/datagenerator (server/src/services/pdfExtract.ts)
+npm install        # or: bun install
+node pdf_extract.mjs --src raw_sources --out ocr_text
+python3 ocr_pack.py --text-dir ocr_text --jsonl ocr_pages_jsonl --md parsed_md
+
+# 5) OCR the remaining (image-only, scanned) PDFs into per-page text zips, then pack:
 python3 ocr_pack.py --zips ocr_zips --jsonl ocr_pages_jsonl --md parsed_md
 ```
 
@@ -48,3 +59,10 @@ Output dataset shape
 `{"source_id": "<booklet>", "page": <N>, "text": "..."}`
 
 `parsed_md/<booklet>.md` — full booklet with `<!-- PAGE: N -->` page separators.
+
+## Source catalog, nightly automation & Persian runbook
+
+- `sources_catalog.csv` — 35 categorized konkur sources (year, group, session, type, url, title, verified); `urls_catalog.txt` — feed for the downloader + crawl seeds.
+- `crawl_deep.py` — deep BFS crawler over the konkur.in file database (archive 57190 → all posts/categories/pagination → every `dl.konkur.in` PDF).
+- `.github/workflows/nightly_pipeline.yml` — 24/7 serverless pipeline (GitHub Actions, cron 03:30 UTC): crawl → fetch → extract → pack, commits text outputs only.
+- `WORKFLOW-FA.md` — Persian step-by-step runbook for tonight's local run, the nightly automation, and the datagenerator-powered question/lesson generation step.
