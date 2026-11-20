@@ -33,6 +33,14 @@ jobs:
           pip install requests
           npm install
 
+      - name: Deep crawl (full file database)
+        continue-on-error: true
+        run: |
+          python crawl_deep.py \
+            https://konkur.in/57190/ \
+            https://konkur.in/category/konkur \
+            --max-pages 400 --out urls_deep.txt
+
       - name: Crawl new konkur.in URLs
         continue-on-error: true
         run: |
@@ -48,7 +56,7 @@ jobs:
       - name: Fetch PDFs
         continue-on-error: true
         run: |
-          { grep -v '^#' urls_catalog.txt; grep -v '^#' urls_nightly.txt; } 2>/dev/null \
+          { grep -v '^#' urls_catalog.txt; grep -v '^#' urls_nightly.txt; grep -v '^#' urls_deep.txt; } 2>/dev/null \
             | sort -u > urls_run.txt
           wc -l urls_run.txt
           python fetch_list.py --urls urls_run.txt --out raw_sources --log logs/fetch_errors.log
@@ -65,7 +73,7 @@ jobs:
         run: |
           git config user.name "konkur-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add ocr_text ocr_pages_jsonl parsed_md logs urls_nightly.txt 2>/dev/null || true
+          git add ocr_text ocr_pages_jsonl parsed_md logs urls_deep.txt urls_nightly.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No new data — skipping commit"
           else

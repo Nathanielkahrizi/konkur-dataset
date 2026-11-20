@@ -9,11 +9,15 @@
 پیش‌نیاز: Python 3.10+، Node 18+، اینترنت.
 
 ```bash
-# ۱. کراول: از ریشهٔ آرشیو ۱۳۸۱-۱۳۹۸ + تگ‌های سالانه، لینک‌های PDF مستقیم استخراج می‌شود
+# ۱. کراول عمیق: از ریشهٔ آرشیو ۱۳۸۱-۱۳۹۸ کل دیتابیس فایل‌های سایت را پیمایش می‌کند (پیشنهادی، کامل‌ترین)
+python3 crawl_deep.py https://konkur.in/57190/ https://konkur.in/category/konkur --max-pages 400 --out urls_deep.txt
+
+# ۱ب. یا کراول تگ‌محور سریع برای سال‌های مشخص
 python3 crawl_konkur.py https://konkur.in/57190/ konkur1404 konkur1403 konkur1402 konkur1401 konkur1400 پاسخ-تشریحی-کنکور-99 کنکور11399 --max-posts 40 --out urls_expanded.txt
 
 # ۲. دانلود دفترچه‌ها (timeout + retry + لاگ خطاها در logs/fetch_errors.log)
-python3 fetch_list.py --urls urls_expanded.txt --out raw_sources --log logs/fetch_errors.log
+{ grep -v '^#' urls_catalog.txt; cat urls_deep.txt urls_expanded.txt 2>/dev/null; } | sort -u > urls_run.txt
+python3 fetch_list.py --urls urls_run.txt --out raw_sources --log logs/fetch_errors.log
 
 # ۳. استخراج متن PDF (کد اقتباس‌شده از datagenerator/server/src/services/pdfExtract.ts)
 npm install
@@ -41,6 +45,7 @@ npm run pack
 ```
 
 نکته‌ها:
+- کراول عمیق (`crawl_deep.py`) از آرشیو ۱۳۸۱-۱۳۹۸ شروع می‌شود و همهٔ پست‌ها، دسته‌ها و صفحه‌بندی‌ها را دنبال می‌کند — کل دیتابیس فایل‌های سایت را پوشش می‌دهد (سایت sitemap ندارد؛ خودم تست کردم).
 - PDFهای خام در ریپو ذخیره نمی‌شوند (حجم/حق نشر)؛ فقط متن استخراج‌شده کامیت می‌شود.
 - اجرای دستی هم ممکن است: تب **Actions → nightly-pipeline → Run workflow**.
 - اگر ۶۰ روز هیچ فعالیتی در ریپو نباشد GitHub اسکچول را غیرفعال می‌کند؛ کافی است دوباره Enable کنی.
